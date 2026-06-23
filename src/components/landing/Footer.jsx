@@ -1,0 +1,131 @@
+import React from "react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
+
+// TikTok SVG icon (not in lucide-react)
+function TikTokIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/>
+    </svg>
+  );
+}
+
+const currentYear = new Date().getFullYear();
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#0D0D0D] text-white/40">
+      <div className="h-px bg-gradient-to-r from-transparent via-[#8C764E]/30 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-5 lg:px-10 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-14">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-5">
+              <img
+                src="/images/logo.jpg"
+                alt="Chaudrel Rénovation"
+                className="h-10 w-10 object-contain rounded-lg brightness-0 invert opacity-75"
+              />
+              <div>
+                <p className="font-display text-lg font-semibold text-white tracking-wide leading-none">
+                  CHAUDREL
+                </p>
+                <p className="text-[9px] tracking-[0.22em] uppercase text-[#8C764E] font-medium mt-1">
+                  Rénovation
+                </p>
+              </div>
+            </div>
+            <p className="text-[13px] font-light leading-relaxed max-w-xs">
+              La passion de rénover, le plaisir d'habiter. Rénovation haut de gamme à Bruxelles.
+            </p>
+            <div className="flex gap-3 mt-6">
+              {[
+                { href: "https://www.instagram.com/chaudrel_renovation/", Icon: Instagram, label: "Instagram" },
+                { href: "https://www.facebook.com/profile.php?id=61574019493337&locale=fr_FR", Icon: Facebook, label: "Facebook" },
+                { href: "https://www.youtube.com/@chaudrelrenovations", Icon: Youtube, label: "YouTube" },
+                { href: "https://www.tiktok.com/@chaudrelrenovations", Icon: TikTokIcon, label: "TikTok" },
+              ].map(({ href, Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/6 hover:bg-[#8C764E]/20 hover:text-[#8C764E] border border-white/8 transition-all duration-300"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#8C764E] font-semibold mb-5">Services</p>
+            <ul className="space-y-2.5">
+              {["Cuisine", "Salle de Bain", "Jardin & Extérieur", "Toiture", "Piscine", "Rénovation Complète"].map((s) => (
+                <li key={s}>
+                  <a href="#services" className="text-[13px] font-light hover:text-[#8C764E] transition-colors duration-200">
+                    {s}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Entreprise */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#8C764E] font-semibold mb-5">Entreprise</p>
+            <ul className="space-y-2.5">
+              {[
+                { label: "Notre Histoire", href: "#story" },
+                { label: "Réalisations", href: "#portfolio" },
+                { label: "Avis Clients", href: "#testimonials" },
+                { label: "FAQ", href: "#faq" },
+                { label: "Contact", href: "#contact" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-[13px] font-light hover:text-[#8C764E] transition-colors duration-200">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#8C764E] font-semibold mb-5">Contact</p>
+            <div className="space-y-2.5 text-[13px] font-light">
+              <a href="mailto:Info@chaudrel.be" className="block hover:text-[#8C764E] transition-colors duration-200">
+                Info@chaudrel.be
+              </a>
+              <a href="tel:+32477273118" className="block hover:text-[#8C764E] transition-colors duration-200">
+                Alberto — +32 477 27 31 18
+              </a>
+              <a href="tel:+32493972517" className="block hover:text-[#8C764E] transition-colors duration-200">
+                Matteo — +32 493 97 25 17
+              </a>
+              <p>Bruxelles, Belgique</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[11px] tracking-wide">
+            © {currentYear} Chaudrel Rénovation. Tous droits réservés.
+          </p>
+          <div className="flex gap-5">
+            <a href="#" className="text-[11px] tracking-wide hover:text-[#8C764E] transition-colors duration-200">
+              Politique de confidentialité
+            </a>
+            <a href="#" className="text-[11px] tracking-wide hover:text-[#8C764E] transition-colors duration-200">
+              Mentions légales
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

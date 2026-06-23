@@ -1,0 +1,115 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Star } from "lucide-react";
+
+const HERO_IMG = "/images/apres.jpg";
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+      {/* Background */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+      >
+        <img
+          src={HERO_IMG}
+          alt="Rénovation haut de gamme à Bruxelles par Chaudrel"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D]/90 via-[#0D0D0D]/40 to-[#0D0D0D]/10" />
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-10 pb-16 lg:pb-24 pt-32 w-full">
+        <div className="max-w-3xl">
+          {/* Social proof pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/15 rounded-full px-4 py-2 mb-8"
+          >
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3 h-3 fill-[#8C764E] text-[#8C764E]" />
+              ))}
+            </div>
+            <span className="text-white/80 text-[12px] font-medium">
+              150+ projets réalisés · 98% clients satisfaits
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-white leading-[1.05] mb-6"
+          >
+            La Passion de Rénover.
+            <br />
+            <span className="italic" style={{ color: "#C4A96B" }}>
+              Le Plaisir d'Habiter.
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.7 }}
+            className="text-base lg:text-lg text-white/60 font-light leading-relaxed max-w-lg mb-10"
+          >
+            Chaudrel transforme votre maison en chef-d'œuvre. Cuisine, salle de bain,
+            jardin, toiture — chaque détail, chaque matériau, chaque finition reflète
+            l'excellence bruxelloise.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="flex flex-col sm:flex-row gap-3"
+          >
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#8C764E] text-white text-[13px] tracking-[0.1em] uppercase font-semibold rounded-full hover:bg-[#C4A96B] transition-all duration-300 shadow-xl shadow-[#8C764E]/30"
+            >
+              Devis gratuit
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#portfolio"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[13px] tracking-[0.1em] uppercase font-medium rounded-full hover:bg-white/20 transition-all duration-300"
+            >
+              Voir nos réalisations
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom floating strip — no scrollbar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.6, duration: 0.8 }}
+        className="relative z-10 mx-5 lg:mx-10 mb-8 lg:mb-10"
+      >
+        <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl px-6 lg:px-10 py-5 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          {[
+            { n: "150+", l: "Projets réalisés" },
+            { n: "98%", l: "Clients satisfaits" },
+            { n: "5★", l: "Note moyenne Google" },
+            { n: "2009", l: "Fondé à Bruxelles" },
+          ].map((s, i) => (
+            <div key={i} className="flex flex-col items-center text-center">
+              <p className="font-display text-2xl lg:text-3xl font-light text-white">{s.n}</p>
+              <p className="text-[11px] tracking-[0.12em] uppercase text-white/45 mt-1">{s.l}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
