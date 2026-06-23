@@ -4,6 +4,14 @@ import { MoveHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
+    id: "facade-moderne",
+    label: "Façade Moderne",
+    type: "Brique & Extension",
+    location: "Bruxelles",
+    before: "/images/avant-facade.jpg",
+    after:  "/images/apres-facade.jpg",
+  },
+  {
     id: "allee",
     label: "Allée Extérieure",
     type: "Asphalte Premium",
